@@ -6,7 +6,7 @@ jobs:
   
   - bash: |
       $ANDROID_HOME/tools/bin/sdkmanager --list
-    displayName: 'list already installed Android packages
+    displayName: 'list already installed Android packages'
 
   - bash: |
       echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'system-images;android-27;google_apis;x86'
@@ -26,5 +26,4 @@ jobs:
       nohup $ANDROID_HOME/emulator/emulator -avd test_android_emulator -no-snapshot > /dev/null 2>&1 & $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
       echo '---'
       $ANDROID_HOME/platform-tools/adb devices
-      echo "Emulator started"
-    displayName: 'start Android emulator (Mac)'
+    displayName: 'start Android emulator'
